@@ -275,6 +275,9 @@ details p{padding:0 20px 20px;color:var(--muted);max-width:70ch}
 .c-card b{font-size:18px}
 .c-card a{text-decoration:none;font-weight:600;overflow-wrap:anywhere}
 .c-card a:hover{color:var(--e3d)}
+.c-links{font-size:14px;color:var(--dim)}
+.c-links a{font-weight:600;color:var(--muted)}
+.c-card .small{margin-top:4px}
 .copy{background:none;border:1px solid var(--line);color:var(--muted);border-radius:4px;font:600 11px/1 var(--f-mono);padding:6px 8px;cursor:pointer;justify-self:start}
 .c-card .btn{justify-self:start;padding:12px 14px;font-size:14px}
 @media (max-width:900px){.c-grid{grid-template-columns:1fr}}

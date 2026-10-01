@@ -16,14 +16,8 @@ const $ = (s,r=document)=>r.querySelector(s), $$ = (s,r=document)=>[...r.querySe
 /* ---------- config into page ---------- */
 function applyConfig(){
   $$("[data-cfg]").forEach(el=>{
-    const k=el.dataset.cfg; const v = k==="telegramAt" ? "@"+CONFIG.telegram : CONFIG[k];
+    const v = CONFIG[el.dataset.cfg];
     if(v!==undefined && v!=="") el.textContent=v;
-  });
-  $$("[data-cfg-href]").forEach(a=>{
-    const t=a.dataset.cfgHref;
-    if(t==="mailto") a.href="mailto:"+CONFIG.email;
-    if(t==="tel") a.href="tel:"+CONFIG.phone;
-    if(t==="tg") a.href="https://t.me/"+CONFIG.telegram;
   });
 }
 
@@ -74,7 +68,7 @@ $("#icsBtn").addEventListener("click",()=>{
 });
 $("#vcfBtn").addEventListener("click",()=>{
   const v=["BEGIN:VCARD","VERSION:3.0","N:Production;DRUKAR;;;","FN:DRUKAR Production","ORG:DRUKAR Production",
-    "TITLE:Partnerships & sales","TEL;TYPE=WORK,VOICE:"+CONFIG.phone,"EMAIL;TYPE=WORK:"+CONFIG.email,
+    "TEL;TYPE=WORK,VOICE:"+CONFIG.phone,"EMAIL;TYPE=WORK:"+CONFIG.email,"EMAIL;TYPE=WORK:"+CONFIG.email2,
     "URL:"+location.href.split("#")[0],"NOTE:Serial 3D printing · Filament · Custom materials. Warsaw Industry Week 2026, stand "+CONFIG.booth,"END:VCARD"].join("\r\n");
   download("DRUKAR-Production.vcf",v,"text/vcard");
 });
@@ -84,7 +78,7 @@ function copyText(text, btn){
   const done=()=>{ const o=btn.textContent; btn.textContent=T[LANG].copied; setTimeout(()=>btn.textContent=o,1400); };
   if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(()=>{}); }
 }
-$$("[data-copy]").forEach(b=>b.addEventListener("click",()=>copyText(CONFIG[b.dataset.copy],b)));
+$$("[data-copy-text]").forEach(b=>b.addEventListener("click",()=>copyText(b.dataset.copyText,b)));
 
 /* ---------- test-print CTA pre-fills message ---------- */
 $$("[data-test]").forEach(a=>a.addEventListener("click",()=>{
