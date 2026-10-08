@@ -134,7 +134,7 @@ const form = $("#leadForm");
 if (form) {
   const pre = $("#f-prefix"), ph = $("#f-phone"), em = $("#f-email"), nm = $("#f-name"), cta = $("#f-cta");
   if (pre && CONFIG.phonePrefix) pre.value = CONFIG.phonePrefix;
-  if (CONFIG.emailRequired) { em.required = true; $("#f-email-opt").hidden = true; $("#f-email-req").hidden = false; }
+  if (CONFIG.emailRequired === false) { em.required = false; $("#f-email-opt").hidden = false; $("#f-email-req").hidden = true; }
 
   const INTEREST = { "easy3dprint": "Serial 3D printing", "test-print": "Serial 3D printing", "drukar": "Filament", "plexiwire": "Custom materials" };
   $$("[data-cta]").forEach(a => a.addEventListener("click", () => {
@@ -180,7 +180,7 @@ if (form) {
     }
     if (!only || only === em) {
       const v = em.value.trim();
-      ok = setErr(em, !v ? (CONFIG.emailRequired ? L.eEmailReq : "") : (/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v) ? "" : L.eEmail)) && ok;
+      ok = setErr(em, !v ? (CONFIG.emailRequired !== false ? L.eEmailReq : "") : (/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v) ? "" : L.eEmail)) && ok;
     }
     return ok;
   }
