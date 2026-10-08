@@ -4,7 +4,7 @@
    ========================================================= */
 var CONFIG = {
   booth: "TBA",                         // e.g. "Hall C · C2.14"
-  endpoint: "",                         // Google Apps Script Web App URL (…/exec) — leads go to Google Sheet
+  endpoint: "https://script.google.com/macros/s/AKfycbxffseF7FcpE2AQJtcMWr1rUOZELZFWRX4juTCc4Ccitf0P9FJorjiZgS5jL7KEB0zhAQ/exec",                         // Google Apps Script Web App URL (…/exec) — leads go to Google Sheet
   gtmId: "",                            // Google Tag Manager container, e.g. "GTM-ABC1234". Empty = no tracking scripts at all
 
   // Form
